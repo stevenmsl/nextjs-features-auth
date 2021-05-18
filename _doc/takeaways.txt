@@ -1,0 +1,25 @@
+- Server side
+  - define a catch-all route
+    - #TA01
+  - pick a provider and configure the authorize method
+    - #TA02
+
+- Client side
+  - use the signIn method
+    - #TA03
+
+- nextAuth will put the token in the cookies once authenticated
+  - next-auth.session-token
+
+- once authenticated, use "useSession" to access the session
+  - #TA04 
+  - seems the "loading" returned by the useSession will not get
+    updated properly if you are already authenticated
+    - workaround using getSession #TA05
+  - getSession also works on the server side
+    - #TA06
+- use Provider to improve the performance
+  - #TA07
+
+- protect regular API routes
+  - #TA08       
