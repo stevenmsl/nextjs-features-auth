@@ -1,8 +1,19 @@
 import { ObjectId, OptionalId, WithId } from "mongodb";
 import { MongoClient } from "mongodb";
 import { User } from "../types";
-export const mongdbUrl =
-  "mongodb+srv://dbTraining:0gsuWQTY0g2kwkdy@cluster0.t0rrt.mongodb.net/auth?retryWrites=true&w=majority";
+// export const mongdbUrl =
+//   "mongodb+srv://dbTraining:0gsuWQTY0g2kwkdy@cluster0.t0rrt.mongodb.net/auth?retryWrites=true&w=majority";
+
+const constructDbUrl = () => {
+  const mongodb_username = process.env.mongodb_username;
+  const mongodb_password = process.env.mongodb_password;
+  const mongodb_clsuter = process.env.mongodb_clsuter;
+  const mongodb_db = process.env.mongodb_db;
+
+  return `mongodb+srv://${mongodb_username}:${mongodb_password}@${mongodb_clsuter}.t0rrt.mongodb.net/${mongodb_db}?retryWrites=true&w=majority";`;
+};
+
+export const mongdbUrl = constructDbUrl();
 
 export type DocCollection = "users";
 
@@ -24,6 +35,8 @@ export const connect = async () => {
       useUnifiedTopology: true,
     });
   } catch (error) {
+    console.log(mongdbUrl);
+    console.log(error);
     result.hasError = true;
     result.message = "unable to connect to the db";
   }
