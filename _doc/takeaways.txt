@@ -22,4 +22,7 @@
   - #TA07
 
 - protect regular API routes
-  - #TA08       
+  - #TA08
+
+- deployment
+  - next.config.js #TA09        
